@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Product</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-white border-b shadow-sm">
+
+        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+
+            <h1 class="text-xl font-bold text-gray-900">
+                Saree Shop
+            </h1>
+
+            <a
+                href="/admin/dashboard"
+                class="text-indigo-600 hover:text-indigo-800 font-medium"
+            >
+                ← Dashboard
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- Main -->
+    <main class="max-w-3xl mx-auto px-6 py-10">
+
+        <div class="bg-white rounded-2xl shadow-sm border p-8">
+
+            <!-- Heading -->
+            <div class="mb-8">
+
+                <h2 class="text-2xl font-bold text-gray-900">
+                    Edit Product
+                </h2>
+
+                <p class="text-gray-500 mt-2">
+                    Update the product information.
+                </p>
+
+            </div>
+
+
+            <!-- Product Form -->
+            <form
+                method="post"
+                action="/admin/products/edit/{{ product.id }}"
+                enctype="multipart/form-data"
+                class="space-y-6"
+            >
+
+                <!-- Product Name -->
+                <div>
+
+                    <label
+                        for="name"
+                        class="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                        Product Name
+                    </label>
+
+                    <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        value="{{ product.name }}"
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg
+                               focus:outline-none focus:ring-2
+                               focus:ring-indigo-500 focus:border-indigo-500"
+                    >
+
+                </div>
+
+
+                <!-- Saree Category -->
+                <div>
+
+                    <label
+                        for="category"
+                        class="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                        Saree Category
+                    </label>
+
+                    <select
+                        id="category"
+                        name="category"
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg
+                               bg-white focus:outline-none focus:ring-2
+                               focus:ring-indigo-500 focus:border-indigo-500"
+                    >
+
+                        <option value="" disabled>
+                            Select a category
+                        </option>
+
+                        <option value="Banarasi"
+                            {% if product.category == "Banarasi" %}selected{% endif %}>
+                            Banarasi
+                        </option>
+
+                        <option value="Silk"
+                            {% if product.category == "Silk" %}selected{% endif %}>
+                            Silk
+                        </option>
+
+                        <option value="Kanjivaram"
+                            {% if product.category == "Kanjivaram" %}selected{% endif %}>
+                            Kanjivaram
+                        </option>
+
+                        <option value="Tussar"
+                            {% if product.category == "Tussar" %}selected{% endif %}>
+                            Tussar
+                        </option>
+
+                        <option value="Muga"
+                            {% if product.category == "Muga" %}selected{% endif %}>
+                            Muga
+                        </option>
+
+                        <option value="Patola"
+                            {% if product.category == "Patola" %}selected{% endif %}>
+                            Patola
+                        </option>
+
+                        <option value="Chanderi"
+                            {% if product.category == "Chanderi" %}selected{% endif %}>
+                            Chanderi
+                        </option>
+
+                        <option value="Kota"
+                            {% if product.category == "Kota" %}selected{% endif %}>
+                            Kota
+                        </option>
+
+                        <option value="Dhakai Jamdani"
+                            {% if product.category == "Dhakai Jamdani" %}selected{% endif %}>
+                            Dhakai Jamdani
+                        </option>
+
+                        <option value="Jamdani"
+                            {% if product.category == "Jamdani" %}selected{% endif %}>
+                            Jamdani
+                        </option>
+
+                        <option value="Cotton Saree"
+                            {% if product.category == "Cotton Saree" %}selected{% endif %}>
+                            Cotton Saree
+                        </option>
+
+                        <option value="Tant"
+                            {% if product.category == "Tant" %}selected{% endif %}>
+                            Tant
+                        </option>
+
+                        <option value="Baluchari"
+                            {% if product.category == "Baluchari" %}selected{% endif %}>
+                            Baluchari
+                        </option>
+
+                        <option value="Others"
+                            {% if product.category == "Others" %}selected{% endif %}>
+                            Others
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Description -->
+                <div>
+
+                    <label
+                        for="description"
+                        class="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                        Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="5"
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg
+                               resize-none
+                               focus:outline-none focus:ring-2
+                               focus:ring-indigo-500 focus:border-indigo-500"
+                    >{{ product.description }}</textarea>
+
+                </div>
+
+
+                <!-- Price + Stock -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                    <!-- Price -->
+                    <div>
+
+                        <label
+                            for="price"
+                            class="block text-sm font-medium text-gray-700 mb-2"
+                        >
+                            Price
+                        </label>
+
+                        <input
+                            id="price"
+                            type="number"
+                            name="price"
+                            value="{{ product.price }}"
+                            step="0.01"
+                            min="0"
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg
+                                   focus:outline-none focus:ring-2
+                                   focus:ring-indigo-500 focus:border-indigo-500"
+                        >
+
+                    </div>
+
+
+                    <!-- Stock -->
+                    <div>
+
+                        <label
+                            for="stock"
+                            class="block text-sm font-medium text-gray-700 mb-2"
+                        >
+                            Stock
+                        </label>
+
+                        <input
+                            id="stock"
+                            type="number"
+                            name="stock"
+                            value="{{ product.stock }}"
+                            min="0"
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg
+                                   focus:outline-none focus:ring-2
+                                   focus:ring-indigo-500 focus:border-indigo-500"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Current Image -->
+                <div>
+
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        Current Image
+                    </label>
+
+                    {% if product.image %}
+
+                    <img
+                        src="/files/products/{{ product.image }}"
+                        alt="{{ product.name }}"
+                        class="w-40 h-40 object-cover rounded-lg border"
+                    >
+
+                    {% else %}
+
+                    <p class="text-gray-500">
+                        No image uploaded.
+                    </p>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- New Image -->
+                <div>
+
+                    <label
+                        for="image"
+                        class="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                        Change Image
+                    </label>
+
+                    <input
+                        id="image"
+                        type="file"
+                        name="image"
+                        accept="image/*"
+                        class="w-full px-4 py-3 border border-gray-300
+                               rounded-lg bg-white
+                               focus:outline-none focus:ring-2
+                               focus:ring-indigo-500"
+                    >
+
+                    <p class="text-sm text-gray-500 mt-2">
+                        Leave empty to keep the current image.
+                    </p>
+
+                </div>
+
+
+                <!-- Buttons -->
+                <div class="flex items-center gap-4 pt-4">
+
+                    <a
+                        href="/admin/products"
+                        class="flex-1 text-center px-6 py-3
+                               border border-gray-300 rounded-lg
+                               text-gray-700 font-medium
+                               hover:bg-gray-50 transition"
+                    >
+                        Cancel
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="flex-1 px-6 py-3
+                               bg-indigo-600 text-white rounded-lg
+                               font-semibold
+                               hover:bg-indigo-700
+                               transition"
+                    >
+                        Update Product
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>
