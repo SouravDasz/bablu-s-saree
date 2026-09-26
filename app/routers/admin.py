@@ -123,17 +123,28 @@ def add_product(
 @router.get("/products")
 def products(
     request: Request,
+    page:int=1,
     db: Session = Depends(get_db),
     admin=Depends(require_admin)
 ):
-    products = db.query(Product).all()
+    if page < 1:
+        page = 1
+    per_page=10
+    skip=(page-1)*per_page
+
+    products = db.query(Product).offset(skip).limit(per_page).all()
+
+    total_product=db.query(Product).count()
+    total_pages=(total_product+per_page-1)//per_page
 
     return templates.TemplateResponse(
         request,
         "admin/products.html",
         {
         
-            "products": products
+            "products": products,
+            "page":page,
+            "total_pages":total_pages,
         }
     )
 
