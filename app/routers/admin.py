@@ -4,6 +4,7 @@ from fastapi.templating import Jinja2Templates
 import os
 import uuid
 import shutil
+from urllib.parse import urlencode
 from sqlalchemy.orm import Session
 
 
@@ -73,6 +74,7 @@ def add_product(
     description: str = Form(...),
     price: float = Form(...),
     stock: int = Form(...),
+    offer: int = Form(0),
 
     image: UploadFile = File(...),
 
@@ -106,6 +108,7 @@ def add_product(
         description=description,
         price=price,
         stock=stock,
+        offer=offer,
         image=filename
     )
 
@@ -124,18 +127,48 @@ def add_product(
 def products(
     request: Request,
     page:int=1,
+    category:str | None=None,
+    price_sort:str | None=None,
+    sort:str | None=None,
     db: Session = Depends(get_db),
     admin=Depends(require_admin)
 ):
+    query=db.query(Product)
+
+    #category
+    if category:
+        query=query.filter(Product.category==category)
+
+    #price sort
+    if price_sort=="low_to_high":
+        query=query.order_by(Product.price.asc())
+    elif price_sort=="high_to_low":
+        query=query.order_by(Product.price.desc())
+
+    # sort by time
+    if sort=="new":
+        query=query.order_by(Product.created_at.desc())
+    elif sort=="old":
+        query=query.order_by(Product.created_at.asc())
+
+    
     if page < 1:
         page = 1
     per_page=10
     skip=(page-1)*per_page
 
-    products = db.query(Product).offset(skip).limit(per_page).all()
+    products = query.offset(skip).limit(per_page).all()
 
-    total_product=db.query(Product).count()
+    total_product=query.order_by(None).count()
     total_pages=(total_product+per_page-1)//per_page
+
+    filter_query = urlencode({
+        key: value for key, value in {
+            "category": category,
+            "price_sort": price_sort,
+            "sort": sort,
+        }.items() if value
+    })
 
     return templates.TemplateResponse(
         request,
@@ -145,6 +178,11 @@ def products(
             "products": products,
             "page":page,
             "total_pages":total_pages,
+            "category": category,
+            "price_sort": price_sort,
+            "sort": sort,
+            "filter_query": filter_query,
+        
         }
     )
 
@@ -177,6 +215,7 @@ def update_product(
     description: str = Form(...),
     price: float = Form(...),
     stock: int = Form(...),
+    offer: int = Form(0),
     image: UploadFile | None = File(None),
     db: Session = Depends(get_db),
     admin=Depends(require_admin)
@@ -197,6 +236,7 @@ def update_product(
     product.description = description
     product.price = price
     product.stock = stock
+    product.offer = offer
 
     # 4. Handle new image
     if image and image.filename:

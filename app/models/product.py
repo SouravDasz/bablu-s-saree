@@ -1,5 +1,6 @@
-from sqlalchemy import String,Column,Integer,Boolean,Text,Numeric
+from sqlalchemy import String,Column,Integer,Boolean,Text,Numeric,Float,DateTime
 from sqlalchemy.orm import Mapped,mapped_column
+from datetime import datetime,timezone
 
 
 from app.database import Base
@@ -31,6 +32,12 @@ class Product(Base):
     stock: Mapped[int] = mapped_column(
         Integer
     )
+    created_at: Mapped[datetime] = mapped_column(
+    DateTime(timezone=True),
+    default=lambda: datetime.now(timezone.utc)
+)
+
+    offer:Mapped[int]=mapped_column(Integer,default=0)
 
     image: Mapped[str | None] = mapped_column(
         String(255),
