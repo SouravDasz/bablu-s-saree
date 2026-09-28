@@ -26,3 +26,9 @@ app.mount(
     name="files"
 )
 
+app.mount(
+    "/static",
+    StaticFiles(directory="app/static"),
+    name="static"
+)
+

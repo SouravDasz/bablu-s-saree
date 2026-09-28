@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AURA — Handcrafted Indian Sarees</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
     <style>
         /* --- CSS RESET & VARIABLES --- */
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -27,10 +32,10 @@
             --text-primary: #f5f3f4;
             --text-muted: #a39e9e;
             --border-color: rgba(229, 169, 60, 0.18);
-            
+
             --font-heading: 'Cormorant Garamond', serif;
             --font-body: 'Montserrat', sans-serif;
-            
+
             --transition: all 0.3s ease;
         }
 
@@ -186,8 +191,8 @@
         /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(180deg, rgba(15, 13, 14, 0.4) 0%, rgba(15, 13, 14, 0.85) 100%), 
-                        url('https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            background: linear-gradient(180deg, rgba(15, 13, 14, 0.4) 0%, rgba(15, 13, 14, 0.85) 100%),
+                url('/static/images/kajevaram.avif') center/cover no-repeat;
             display: flex;
             align-items: center;
             position: relative;
@@ -358,8 +363,8 @@
         /* --- BRAND HERITAGE BANNER --- */
         .banner {
             padding: 6rem 0;
-            background: linear-gradient(rgba(15, 13, 14, 0.85), rgba(15, 13, 14, 0.85)), 
-                        url('https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1920&auto=format&fit=crop') fixed center/cover;
+            background: linear-gradient(rgba(15, 13, 14, 0.85), rgba(15, 13, 14, 0.85)),
+                url('/static/images/kajevaram.avif') fixed center/cover;
             text-align: center;
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
@@ -464,6 +469,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- HEADER / NAVIGATION -->
@@ -471,16 +477,9 @@
         <div class="container nav-container">
             <a href="#" class="logo">AURA</a>
             <ul class="nav-links">
-                <li><a href="#collections">Collections</a></li>
-                <li><a href="#featured">Featured</a></li>
-                <li><a href="#heritage">Heritage</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="/collections">Collections</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
-            <div class="nav-icons">
-                <a href="#">Search</a>
-                <a href="#">Account</a>
-                <a href="#">Bag (0)</a>
-            </div>
         </div>
     </header>
 
@@ -488,12 +487,12 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <p class="hero-subtitle">The Royal Silk Collection</p>
-                <h1 class="hero-title">Timeless Elegance Woven in Silk</h1>
-                <p class="hero-description">Explore our handpicked curation of authentic Kanjeevaram, Banarasi, and Organza sarees crafted by master artisans across India.</p>
+                <p class="hero-subtitle">The AURA Saree Collection</p>
+                <h1 class="hero-title">Timeless Sarees, Curated for You</h1>
+                <p class="hero-description">Discover a refined collection of Kanjeevaram, Banarasi, organza, and
+                    handloom sarees, chosen for their craft, beauty, and effortless elegance.</p>
                 <div class="hero-buttons">
-                    <a href="#featured" class="btn-primary">Shop Collection</a>
-                    <a href="#heritage" class="btn-outline">Our Heritage</a>
+                    <a href="/collections" class="btn-primary">Shop Collection</a>
                 </div>
             </div>
         </div>
@@ -508,21 +507,22 @@
             </div>
             <div class="category-grid">
                 <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop" alt="Banarasi Silk Saree">
-                    <div class="category-overlay">
-                        <h3 class="category-title">Banarasi Silks</h3>
-                        <span class="category-count">24 Designs</span>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop" alt="Kanjeevaram Saree">
+                    <img src="/static/images/download (8).jfif" alt="Kanjeevaram Saree">
                     <div class="category-overlay">
                         <h3 class="category-title">Kanjeevaram</h3>
                         <span class="category-count">18 Designs</span>
                     </div>
                 </div>
                 <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop" alt="Organza Saree">
+                    <img src="/static/images/download (3).jfif" alt="Banarasi Silk Saree">
+                    <div class="category-overlay">
+                        <h3 class="category-title">Banarasi Silks</h3>
+                        <span class="category-count">24 Designs</span>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <img src="/static/images/download (6).jfif" alt="Organza Saree">
                     <div class="category-overlay">
                         <h3 class="category-title">Sheer Organza</h3>
                         <span class="category-count">15 Designs</span>
@@ -544,47 +544,49 @@
                 <div class="product-card">
                     <div class="product-image">
                         <span class="badge">Bestseller</span>
-                        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=600&auto=format&fit=crop" alt="Crimson Royal Banarasi">
+                        <img src="/static/images/bangali.jpg" alt="Crimson Royal Banarasi">
                     </div>
                     <div class="product-info">
                         <p class="product-tag">Pure Silk</p>
-                        <h3 class="product-name">Crimson Royal Banarasi</h3>
-                        <p class="product-price">₹18,500</p>
+                        <h3 class="product-name">Royal Banarasi</h3>
+                        <p class="product-price">₹2,500</p>
                     </div>
                 </div>
                 <!-- Product 2 -->
                 <div class="product-card">
                     <div class="product-image">
                         <span class="badge">New</span>
-                        <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=600&auto=format&fit=crop" alt="Golden Weaver Kanjeevaram">
+                        <img src="/static/images/yollow.jpg" alt="Golden Weaver Kanjeevaram">
                     </div>
                     <div class="product-info">
-                        <p class="product-tag">Zari Handloom</p>
+                        <p class="product-tag">
+                            Kanjeevaram
+                        </p>
                         <h3 class="product-name">Golden Weaver Kanjeevaram</h3>
-                        <p class="product-price">₹24,000</p>
+                        <p class="product-price">₹4,000</p>
                     </div>
                 </div>
                 <!-- Product 3 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=600&auto=format&fit=crop" alt="Emerald Floral Organza">
+                        <img src="/static/images/sweet pink.jpg" alt="Emerald Floral Organza">
                     </div>
                     <div class="product-info">
                         <p class="product-tag">Lightweight</p>
                         <h3 class="product-name">Emerald Floral Organza</h3>
-                        <p class="product-price">₹12,200</p>
+                        <p class="product-price">₹1,200</p>
                     </div>
                 </div>
                 <!-- Product 4 -->
                 <div class="product-card">
                     <div class="product-image">
                         <span class="badge">Exclusive</span>
-                        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=600&auto=format&fit=crop" alt="Midnight Blue Chanderi">
+                        <img src="/static/images/warm.jfif" alt="Solid Monochromatic Saree">
                     </div>
                     <div class="product-info">
-                        <p class="product-tag">Heritage Weave</p>
-                        <h3 class="product-name">Midnight Blue Chanderi</h3>
-                        <p class="product-price">₹15,800</p>
+                        <p class="product-tag">Mulmul Cotton</p>
+                        <h3 class="product-name">Solid Monochromatic Saree</h3>
+                        <p class="product-price">₹1,800</p>
                     </div>
                 </div>
             </div>
@@ -596,8 +598,10 @@
         <div class="container">
             <div class="banner-content">
                 <h2>Preserving Indian Artistry</h2>
-                <p>Every saree at AURA is a labor of love, woven over weeks by traditional master weavers across Varanasi, Kanchipuram, and Bengal. We bridge centuries-old craftsmanship with modern aesthetic refinement.</p>
-                <a href="#" class="btn-primary">Learn Our Story</a>
+                <p>Every saree at AURA is a labor of love, woven over weeks by traditional master weavers across
+                    Varanasi, Kanchipuram, and Bengal. We bridge centuries-old craftsmanship with modern aesthetic
+                    refinement.</p>
+                <a href="/our_story" class="btn-primary">Learn Our Story</a>
             </div>
         </div>
     </section>
@@ -608,33 +612,32 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="#" class="logo">AURA</a>
-                    <p>Authentic handloom sarees crafted with tradition, elegance, and pure silk.</p>
+                    <p>Premium sarees crafted with tradition, artistry, and timeless elegance.</p>
                 </div>
                 <div class="footer-column">
                     <h4>Collections</h4>
                     <ul>
                         <li><a href="#">Banarasi Silks</a></li>
                         <li><a href="#">Kanjeevaram</a></li>
-                        <li><a href="#">Organza & Tissue</a></li>
-                        <li><a href="#">Bridal Trousseau</a></li>
+                        <li><a href="#">Silk</a></li>
+                        <li><a href="#">Cotton</a></li>
+                        <li><a href="#">Others</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h4>Customer Care</h4>
+                    <h4>Owner Contact</h4>
                     <ul>
-                        <li><a href="#">Shipping & Returns</a></li>
-                        <li><a href="#">Saree Care Guide</a></li>
-                        <li><a href="#">Authenticity Certificate</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Babul Das &amp; Sompa Das</a></li>
+                        <li><a href="tel:+919630399898">+91 96303 99898</a></li>
+                        <li><a href="mailto:rirthadas6@gmail.com">rirthadas6@gmail.com</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4>Boutique</h4>
                     <ul>
-                        <li><a href="#">About AURA</a></li>
-                        <li><a href="#">Master Weavers</a></li>
+                        <li><a href="/about_us">About AURA</a></li>
                         <li><a href="#">Store Locator</a></li>
-                        <li><a href="#">Press & Media</a></li>
+                        <li><a href="/our_story">Press & Media</a></li>
                     </ul>
                 </div>
             </div>
@@ -645,4 +648,5 @@
     </footer>
 
 </body>
+
 </html>
