@@ -5,7 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from app.core.config import SESSION_SECRET
 from app.routers.admin import router as admin_router
 from app.database import Base,engine
-
+from app.routers.home import router as home_router
 
 app=FastAPI(title="Saree app")
 
@@ -14,15 +14,15 @@ app.add_middleware(
     secret_key=SESSION_SECRET
 )
 
-app.include_router(admin_router)
+router_list=[home_router,admin_router]
+for router in router_list:
+    app.include_router(router)
 
 Base.metadata.create_all(bind=engine)
+
 app.mount(
     "/files",
     StaticFiles(directory="uploads"),
     name="files"
 )
 
-@app.get("/")
-def home():
-    return {"api testing"}
