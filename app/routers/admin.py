@@ -55,9 +55,11 @@ def post_admin_login(
 
 #render dashbord
 @router.get("/dashboard")
-def dashboard(request:Request,admin=Depends(require_admin)):
-
-    return templates.TemplateResponse(request=request,name="admin/dashboard.html")
+def dashboard(request:Request,admin=Depends(require_admin),db:Session=Depends(get_db)):
+    total_saree=db.query(Product).count()
+    return templates.TemplateResponse(request=request,name="admin/dashboard.html",context={
+        "total_product":total_saree
+    })
 
 
 #Adding new product
