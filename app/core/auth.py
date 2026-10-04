@@ -1,13 +1,11 @@
-from fastapi import Request
-from fastapi.responses import RedirectResponse
+from fastapi import HTTPException, Request
 
 
 def require_admin(request: Request):
-
     if not request.session.get("admin"):
-        return RedirectResponse(
-            "/admin/login",
-            status_code=303
+        raise HTTPException(
+            status_code=303,
+            headers={"Location": "/admin/login"}
         )
 
     return True

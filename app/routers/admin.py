@@ -25,26 +25,27 @@ templates = Jinja2Templates(
 
 #render login page
 @router.get("/login")
-def admin_login(request:Request):
+def get_admin_login(request:Request):
     return templates.TemplateResponse(
         request=request,name="login.html"
     )
 
 #send login request 
 @router.post("/login")
-def admin_login(
+def post_admin_login(
     request: Request,
     email: str = Form(...),
     password: str = Form(...)
 ):
-    print(email,ADMIN_EMAIL)
-    print(password,ADMIN_PASSWORD)
-    if email != ADMIN_EMAIL:
-        return {"error": "Invalid credentials"}
+    if email != ADMIN_EMAIL or password != ADMIN_PASSWORD:
+        return templates.TemplateResponse(
+            request=request,
+            name="login.html",
+            context={"error": "Invalid email or password."},
+            status_code=401,
+        )
 
-    if password != ADMIN_PASSWORD:
-        return {"error": "Invalid credentials"}
-
+    request.session.clear()
     request.session["admin"] = True
 
     return RedirectResponse(
@@ -62,8 +63,14 @@ def dashboard(request:Request,admin=Depends(require_admin)):
 #Adding new product
 
 @router.get("/products/add")
-def add_products(request:Request):
+def add_products(request:Request,admin=Depends(require_admin)):
     return templates.TemplateResponse(request,name="admin/product_add.html")
+
+
+@router.get("/logout")
+def admin_logout(request: Request):
+    request.session.clear()
+    return RedirectResponse("/admin/login", status_code=303)
 
 @router.post("/products/add")
 def add_product(
