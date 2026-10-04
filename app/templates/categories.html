@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories | AURA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #fcfbf7;
+        }
+
+        .display {
+            font-family: 'Cormorant Garamond', serif;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen text-[#181512] antialiased">
+    <div class="bg-[#181512] px-4 py-2 text-center text-[10px] font-medium uppercase tracking-[0.25em] text-[#e8d5b5]">
+        Complimentary Express Worldwide Shipping & Imperial Gift Packaging
+    </div>
+
+    <header class="sticky top-0 z-50 border-b border-[#c5a059]/20 bg-[#fcfbf7]/95 backdrop-blur-md">
+        <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6 lg:px-8">
+            <a href="/" class="display text-3xl font-bold tracking-[0.25em] text-[#181512] sm:text-4xl">AURA</a>
+            <nav
+                class="hidden items-center gap-10 text-[11px] font-medium uppercase tracking-[0.2em] text-[#2c2621] sm:flex">
+                <a href="/" class="transition hover:text-[#c5a059]">Home</a>
+                <a href="/products" class="transition hover:text-[#c5a059]">Sarees</a>
+                <a href="/categories" class="font-semibold text-[#c5a059]">Categories</a>
+                <a href="#about" class="transition hover:text-[#c5a059]">About Us</a>
+            </nav>
+            <a href="/admin/login" aria-label="Account" class="text-[#2c2621] transition hover:text-[#c5a059]">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
+        <section class="mb-10 border-b border-[#c5a059]/25 pb-8">
+            <p class="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#c5a059]">Explore the collection</p>
+            <h1 class="display mt-2 text-5xl font-medium text-[#181512] sm:text-6xl">Saree Categories</h1>
+            <p class="mt-3 max-w-xl text-xs leading-6 text-[#786e63]">Discover the distinct weaves, traditions, and
+                textures that make every AURA drape special.</p>
+        </section>
+
+        <div class="space-y-10">
+            {% for category in category_cards %}
+            <section class="border border-[#c5a059]/25 bg-white p-5 shadow-sm sm:p-7">
+                <div
+                    class="mb-5 flex flex-col justify-between gap-3 border-b border-[#c5a059]/15 pb-4 sm:flex-row sm:items-end">
+                    <div>
+                        <p class="text-[9px] font-semibold uppercase tracking-[0.25em] text-[#c5a059]">Category
+                            collection</p>
+                        <h2 class="display mt-1 text-3xl font-medium text-[#181512]">{{ category.name }}</h2>
+                    </div>
+                    {% if category.products %}
+                    <a href="/products?category={{ category.name | urlencode }}"
+                        class="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#181512] underline decoration-[#c5a059] underline-offset-4">View
+                        all {{ category.products|length }}</a>
+                    {% endif %}
+                </div>
+
+                {% if category.products %}
+                <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+                    {% for product in category.products %}
+                    <article class="overflow-hidden border border-[#c5a059]/15 bg-[#fcfbf7]">
+                        <div class="aspect-[0.82] overflow-hidden bg-[#f4f0ea]">
+                            {% if product.image %}
+                            <img src="/files/products/{{ product.image }}" alt="{{ product.name }}"
+                                class="h-full w-full object-cover">
+                            {% else %}
+                            <img src="/static/images/kajevaram.avif" alt="{{ product.name }}"
+                                class="h-full w-full object-cover">
+                            {% endif %}
+                        </div>
+                        <div class="p-3">
+                            <h3 class="display truncate text-lg text-[#181512]" title="{{ product.name }}">{{
+                                product.name }}</h3>
+                            <p class="mt-1 text-xs font-semibold text-[#181512]">₹{{ '%.0f'|format(product.price) }}</p>
+                            <a href="/product/{{ product.id }}"
+                                class="mt-3 block border border-[#181512] py-2 text-center text-[9px] font-semibold uppercase tracking-[0.16em] text-[#181512]">Discover
+                                Saree</a>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="border border-dashed border-[#c5a059]/35 bg-[#fcfbf7] px-5 py-10 text-center">
+                    <p class="display text-2xl text-[#181512]">No sarees in this collection yet</p>
+                    <p class="mt-2 text-xs text-[#786e63]">This category does not have any sarees now. Please check back
+                        soon.</p>
+                </div>
+                {% endif %}
+            </section>
+            {% endfor %}
+        </div>
+    </main>
+
+    <footer id="about"
+        class="border-t border-[#c5a059]/20 bg-[#181512] py-10 text-center text-xs tracking-[0.2em] text-[#b3a89b]">
+        <a href="/" class="display text-2xl tracking-[0.3em] text-[#e8d5b5]">AURA</a>
+        <p class="mt-2 text-[10px] uppercase tracking-[0.25em] text-[#8c8275]">Handcrafted Royal Luxury Sarees</p>
+    </footer>
+</body>
+
+</html>

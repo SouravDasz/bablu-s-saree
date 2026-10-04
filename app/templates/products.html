@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Sarees | AURA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fcfbf7;
+        }
+
+        .display {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Custom scrollbar for clean luxury look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #fcfbf7;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c5a059;
+        }
+
+        /* Subtle gold glow effect */
+        .gold-glow {
+            box-shadow: 0 10px 30px -10px rgba(197, 160, 89, 0.15);
+        }
+
+        .filter-select {
+            color-scheme: light;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        .filter-select option {
+            background: #fcfbf7;
+            color: #181512;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen text-[#181512] antialiased selection:bg-[#c5a059] selection:text-white">
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-[#181512] px-4 py-2 text-center text-[10px] font-medium uppercase tracking-[0.25em] text-[#e8d5b5]">
+        Complimentary Express Worldwide Shipping & Imperial Gift Packaging
+    </div>
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 border-b border-[#c5a059]/20 bg-[#fcfbf7]/95 backdrop-blur-md transition-all">
+        <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6 lg:px-8">
+            <a href="/"
+                class="display text-3xl font-bold tracking-[0.25em] text-[#181512] transition hover:opacity-80 sm:text-4xl">
+                AURA
+            </a>
+
+            <nav
+                class="hidden items-center gap-10 text-[11px] font-medium uppercase tracking-[0.2em] text-[#2c2621] sm:flex">
+                <a href="/" class="transition hover:text-[#c5a059]">Home</a>
+                <a href="/products"
+                    class="relative text-[#c5a059] font-semibold after:absolute after:-bottom-1 after:left-0 after:h-[1.5px] after:w-full after:bg-[#c5a059]">Sarees</a>
+                <a href="/categories" class="transition hover:text-[#c5a059]">Categories</a>
+                <a href="/about" class="transition hover:text-[#c5a059]">About Us</a>
+            </nav>
+
+            <div class="flex items-center gap-6 text-[#2c2621]">
+                <button type="button" aria-label="Search" class="transition hover:text-[#c5a059]">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                <a href="#" aria-label="Wishlist" class="transition hover:text-[#c5a059]">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.684a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                </a>
+                <a href="/admin/login" aria-label="Account" class="transition hover:text-[#c5a059]">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-4 pb-20 pt-8 sm:px-6 lg:px-8">
+        <!-- HERO BANNER SECTION -->
+        <section
+            class="relative mb-12 min-h-[300px] overflow-hidden rounded-sm border border-[#c5a059]/20 bg-[#181512] shadow-xl sm:min-h-[380px]">
+            <!-- Full Cover Background Image -->
+            <img src="/static/images/download%20(9).jfif" alt="Woman wearing an elegant saree"
+                class="absolute inset-y-0 right-0 left-auto h-full w-full object-cover object-[center_18%] opacity-60 sm:w-[60%] sm:scale-[1.08] sm:origin-right sm:object-contain sm:object-right sm:opacity-95">
+
+            <!-- Dark Gradient Layer -->
+            <div class="absolute inset-0 bg-gradient-to-r from-[#181512] via-[#181512]/85 to-transparent"></div>
+            <div
+                class="pointer-events-none absolute inset-y-0 left-0 z-[2] w-[68%] bg-gradient-to-r from-[#181512] via-[#181512]/70 to-transparent">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#181512] via-transparent to-transparent"></div>
+
+            <!-- Content Banner -->
+            <div
+                class="relative z-10 flex h-full min-h-[300px] flex-col justify-end max-w-xl px-8 py-10 sm:min-h-[380px] sm:px-14 sm:py-14">
+                <div class="flex items-center gap-3">
+                    <span class="h-[1px] w-8 bg-[#c5a059]"></span>
+                    <p class="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#e8d5b5]">
+                        The Royal Heritage Collection
+                    </p>
+                </div>
+                <h1 class="display mt-2 text-4xl font-normal uppercase tracking-[0.18em] text-[#ffffff] sm:text-6xl">
+                    All Sarees
+                </h1>
+                <p class="mt-3 max-w-md text-xs leading-relaxed text-[#d1c8bd]">
+                    Immerse yourself in our exquisite handcrafted drapes, woven with timeless tradition, delicate
+                    zardosi, and opulent royal silk.
+                </p>
+            </div>
+        </section>
+
+        <!-- FILTERS & SEARCH BAR -->
+        <form method="get" action="/products"
+            class="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_190px_190px_190px_auto] lg:items-end">
+            <!-- Search Input -->
+            <div class="relative flex items-center">
+                <span class="pointer-events-none absolute left-4 text-[#c5a059]">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </span>
+                <input type="search" name="search" value="{{ search }}"
+                    placeholder="Search by weave, color, or motif..."
+                    class="w-full border border-[#c5a059]/25 bg-white py-3.5 pl-11 pr-4 text-xs tracking-wide text-[#181512] shadow-sm transition placeholder:text-[#a39b8e] focus:border-[#c5a059] focus:outline-none focus:ring-1 focus:ring-[#c5a059]">
+            </div>
+
+            <!-- Category Select -->
+            <div class="relative">
+                <select name="category" aria-label="Filter by category"
+                    class="filter-select w-full appearance-none border border-[#c5a059]/25 bg-white px-4 py-3.5 pr-10 text-[#181512] shadow-sm transition focus:border-[#c5a059] focus:outline-none focus:ring-1 focus:ring-[#c5a059]">
+                    <option value="">All Categories</option>
+                    {% for option in categories %}
+                    <option value="{{ option }}" {% if category==option %}selected{% endif %}>{{ option }}</option>
+                    {% endfor %}
+                </select>
+                <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#c5a059]"><svg
+                        class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m6 9 6 6 6-6" />
+                    </svg></span>
+            </div>
+
+            <!-- Price Select -->
+            <div class="relative">
+                <select name="price_sort" aria-label="Filter by price"
+                    class="filter-select w-full appearance-none border border-[#c5a059]/25 bg-white px-4 py-3.5 pr-10 text-[#181512] shadow-sm transition focus:border-[#c5a059] focus:outline-none focus:ring-1 focus:ring-[#c5a059]">
+                    <option value="">Price: Any Order</option>
+                    <option value="low_to_high" {% if price_sort=='low_to_high' %}selected{% endif %}>Price: Low to High
+                    </option>
+                    <option value="high_to_low" {% if price_sort=='high_to_low' %}selected{% endif %}>Price: High to Low
+                    </option>
+                </select>
+                <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#c5a059]"><svg
+                        class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m6 9 6 6 6-6" />
+                    </svg></span>
+            </div>
+
+            <!-- Date Select -->
+            <div class="relative">
+                <select name="sort" aria-label="Filter by arrival date"
+                    class="filter-select w-full appearance-none border border-[#c5a059]/25 bg-white px-4 py-3.5 pr-10 text-[#181512] shadow-sm transition focus:border-[#c5a059] focus:outline-none focus:ring-1 focus:ring-[#c5a059]">
+                    <option value="newest" {% if sort=='newest' or not sort %}selected{% endif %}>Added: Newest First
+                    </option>
+                    <option value="oldest" {% if sort=='oldest' %}selected{% endif %}>Added: Oldest First</option>
+                </select>
+                <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#c5a059]"><svg
+                        class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m6 9 6 6 6-6" />
+                    </svg></span>
+            </div>
+
+            <div class="flex min-h-[48px] gap-2">
+                <button type="submit"
+                    class="flex-1 border border-[#181512] bg-[#181512] px-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#e8d5b5] transition hover:bg-[#c5a059] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#c5a059]/40">
+                    Apply Filters
+                </button>
+                <a href="/products"
+                    class="flex items-center justify-center border border-[#c5a059]/50 bg-white px-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#181512] transition hover:border-[#181512] hover:bg-[#f4f0ea] focus:outline-none focus:ring-2 focus:ring-[#c5a059]/40">
+                    Clear
+                </a>
+            </div>
+        </form>
+
+        <!-- PRODUCT GRID -->
+        {% if products %}
+        <section class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4 lg:gap-8">
+            {% for product in products %}
+            <article
+                class="group flex flex-col justify-between overflow-hidden border border-[#c5a059]/15 bg-white shadow-sm transition-colors duration-200 hover:border-[#c5a059] hover:ring-1 hover:ring-[#c5a059] hover:ring-inset">
+                <!-- Image Container -->
+                <div class="relative aspect-[0.78] overflow-hidden bg-[#f4f0ea]">
+                    {% if product.image %}
+                    <img src="/files/products/{{ product.image }}" alt="{{ product.name }}"
+                        class="h-full w-full object-cover">
+                    {% else %}
+                    <img src="/static/images/kajevaram.avif" alt="{{ product.name }}"
+                        class="h-full w-full object-cover">
+                    {% endif %}
+
+                    {% if product.offer and product.offer > 0 %}
+                    <span
+                        class="absolute left-3 top-3 border border-[#c5a059]/40 bg-[#181512]/90 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-[#e8d5b5] backdrop-blur-sm">
+                        {{ product.offer }}% Savings
+                    </span>
+                    {% endif %}
+                </div>
+
+                <!-- Product Details -->
+                <div class="flex flex-1 flex-col justify-between p-5">
+                    <div>
+                        <p class="text-[9px] font-semibold uppercase tracking-[0.25em] text-[#c5a059]">
+                            {{ product.category }}
+                        </p>
+                        <h2 class="display mt-1.5 truncate text-xl font-medium tracking-wide text-[#181512]"
+                            title="{{ product.name }}">
+                            {{ product.name }}
+                        </h2>
+
+                        <div class="mt-2.5 flex items-baseline gap-2.5">
+                            {% if product.offer and product.offer > 0 %}
+                            <span class="text-sm font-semibold text-[#181512]">₹{{ '%.0f'|format(product.price -
+                                (product.price * product.offer / 100)) }}</span>
+                            <span class="text-xs text-[#a39b8e] line-through">₹{{ '%.0f'|format(product.price)
+                                }}</span>
+                            {% else %}
+                            <span class="text-sm font-semibold text-[#181512]">₹{{ '%.0f'|format(product.price)
+                                }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <a href="/product/{{ product.id }}"
+                        class="mt-5 block w-full border border-[#181512] bg-transparent py-3 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-[#181512] transition-colors duration-200 hover:border-[#c5a059] hover:bg-[#c5a059] hover:text-white">
+                        Discover Saree
+                    </a>
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+        {% else %}
+        <!-- EMPTY STATE -->
+        <section class="my-12 border border-dashed border-[#c5a059]/40 bg-white px-6 py-24 text-center shadow-sm">
+            <h2 class="display text-3xl font-medium text-[#181512]">No Masterpieces Found</h2>
+            <p class="mt-2 text-xs tracking-wide text-[#786e63]">We couldn't find any sarees matching your
+                search criteria.</p>
+            <a href="/products"
+                class="mt-8 inline-block border border-[#c5a059] bg-[#181512] px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#e8d5b5] transition hover:bg-[#c5a059] hover:text-white">
+                View Entire Collection
+            </a>
+        </section>
+        {% endif %}
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="about"
+        class="border-t border-[#c5a059]/20 bg-[#181512] py-12 text-center text-xs tracking-[0.2em] text-[#b3a89b]">
+        <div class="mx-auto max-w-7xl px-4">
+            <a href="/" class="display inline-block text-2xl font-normal tracking-[0.3em] text-[#e8d5b5]">AURA</a>
+            <p class="mt-2 text-[10px] uppercase tracking-[0.25em] text-[#8c8275]">
+                Handcrafted Royal Luxury Sarees &bull; Designed for Timeless Celebrations
+            </p>
+            <p class="mt-6 text-[10px] text-[#5e564d]">
+                &copy; {{ current_year if current_year else '2026' }} AURA Atelier. All rights reserved.
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>

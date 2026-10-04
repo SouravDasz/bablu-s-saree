@@ -121,14 +121,19 @@
 
         <!-- Submitted Filter Preferences -->
         <form method="get" action="/admin/products"
-            class="mb-5 grid grid-cols-1 gap-3 rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm sm:grid-cols-2 lg:grid-cols-4">
+            class="mb-5 grid grid-cols-1 gap-3 rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm sm:grid-cols-2 lg:grid-cols-5">
+            <label class="text-xs font-semibold text-slate-600">
+                Search
+                <input type="search" name="search" value="{{ search }}" placeholder="Product name..."
+                    class="mt-1.5 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-xs text-slate-800 placeholder:text-slate-400 focus:border-royal-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-royal-500/20">
+            </label>
+
             <label class="text-xs font-semibold text-slate-600">
                 Category
                 <select name="category"
                     class="mt-1.5 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-xs text-slate-800 focus:border-royal-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-royal-500/20">
                     <option value="">All categories</option>
-                    {% for option in ["Banarasi", "Silk", "Kanjivaram", "Tussar", "Muga", "Patola", "Chanderi", "Kota",
-                    "Dhakai Jamdani", "Jamdani", "Cotton Saree", "Tant", "Baluchari", "Others"] %}
+                    {% for option in categories %}
                     <option value="{{ option }}" {% if category==option %}selected{% endif %}>{{ option }}</option>
                     {% endfor %}
                 </select>

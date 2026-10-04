@@ -136,6 +136,7 @@ def add_product(
 def products(
     request: Request,
     page:int=1,
+    search: str | None = None,
     category:str | None=None,
     price_sort:str | None=None,
     sort:str | None=None,
@@ -143,6 +144,9 @@ def products(
     admin=Depends(require_admin)
 ):
     query=db.query(Product)
+
+    if search:
+        query = query.filter(Product.name.ilike(f"%{search}%"))
 
     #category
     if category:
@@ -170,9 +174,14 @@ def products(
 
     total_product=query.order_by(None).count()
     total_pages=(total_product+per_page-1)//per_page
+    categories = [
+        row[0]
+        for row in db.query(Product.category).distinct().order_by(Product.category).all()
+    ]
 
     filter_query = urlencode({
         key: value for key, value in {
+            "search": search,
             "category": category,
             "price_sort": price_sort,
             "sort": sort,
@@ -185,9 +194,11 @@ def products(
         {
         
             "products": products,
+            "categories": categories,
             "page":page,
             "total_pages":total_pages,
             "category": category,
+            "search": search or "",
             "price_sort": price_sort,
             "sort": sort,
             "filter_query": filter_query,

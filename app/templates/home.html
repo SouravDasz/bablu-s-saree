@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA — Handcrafted Indian Sarees</title>
+    <title>AURA — High Haute Couture Indian Handlooms</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Montserrat:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap"
         rel="stylesheet">
 
     <style>
-        /* --- CSS RESET & VARIABLES --- */
+        /* --- ULTRA-LUXURY ROYAL ARCHITECTURE --- */
         *,
         *::before,
         *::after {
@@ -24,27 +24,64 @@
         }
 
         :root {
-            --bg-color: #0f0d0e;
-            --surface-color: #181517;
-            --surface-hover: #221e21;
-            --accent-gold: #e5a93c;
-            --accent-gold-hover: #f3be5d;
-            --text-primary: #f5f3f4;
-            --text-muted: #a39e9e;
-            --border-color: rgba(229, 169, 60, 0.18);
+            /* Midnight Obsidian Canvas & Deep Velvet Shades */
+            --bg-void: #070708;
+            --bg-surface: #0E0D10;
+            --bg-card: #151318;
+            --bg-glass: rgba(7, 7, 8, 0.65);
 
-            --font-heading: 'Cormorant Garamond', serif;
+            /* Metallic Gold Palette */
+            --gold-base: #D4AF37;
+            --gold-light: #F3E5AB;
+            --gold-bright: #FFE58F;
+            --gold-dark: #996515;
+            --gold-gradient: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+            --gold-shimmer: linear-gradient(90deg, rgba(212, 175, 55, 0) 0%, rgba(255, 229, 143, 0.4) 50%, rgba(212, 175, 55, 0) 100%);
+
+            /* Regal Crimson Accent */
+            --ruby-regal: #800020;
+
+            /* Typography Colors */
+            --text-gold: #E6CA65;
+            --text-heading: #F8F5EE;
+            --text-body: #B8B3AC;
+            --text-muted: #7A756E;
+
+            /* Fonts */
+            --font-cinzel: 'Cinzel', serif;
+            --font-playfair: 'Playfair Display', serif;
             --font-body: 'Montserrat', sans-serif;
 
-            --transition: all 0.3s ease;
+            /* Luxury Borders & Glows */
+            --border-gold: rgba(212, 175, 55, 0.22);
+            --border-gold-bright: rgba(212, 175, 55, 0.6);
+            --shadow-gold: 0 10px 40px -10px rgba(180, 135, 40, 0.25);
+            --shadow-deep: 0 30px 60px rgba(0, 0, 0, 0.9);
+            --ease-luxury: cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
+            background-color: var(--bg-void);
+            color: var(--text-body);
             font-family: var(--font-body);
-            line-height: 1.6;
+            line-height: 1.8;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Royal Ambient Glow Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(128, 0, 32, 0.15) 0%, transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(180, 135, 40, 0.12) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
         }
 
         a {
@@ -58,413 +95,743 @@
             display: block;
         }
 
-        /* --- UTILITY CLASSES --- */
         .container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            letter-spacing: 2px;
-            color: var(--text-primary);
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .section-title p {
-            color: var(--accent-gold);
-            font-size: 0.85rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-top: 0.5rem;
-        }
-
-        .btn-primary {
+        /* --- TYPOGRAPHY UTILITIES --- */
+        .gold-text {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             display: inline-block;
-            padding: 0.85rem 2.2rem;
-            background-color: var(--accent-gold);
-            color: var(--bg-color);
-            font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border: 1px solid var(--accent-gold);
-            cursor: pointer;
-            transition: var(--transition);
         }
 
-        .btn-primary:hover {
-            background-color: transparent;
-            color: var(--accent-gold);
+        .section-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 5rem auto;
+            position: relative;
+        }
+
+        .section-header .tagline {
+            font-family: var(--font-cinzel);
+            font-size: 0.72rem;
+            letter-spacing: 7px;
+            text-transform: uppercase;
+            color: var(--gold-base);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 1.2rem;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-playfair);
+            font-size: 3.8rem;
+            font-weight: 400;
+            color: var(--text-heading);
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            margin-top: 1.2rem;
+            font-size: 0.95rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .crest-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+
+        .crest-divider::before,
+        .crest-divider::after {
+            content: '';
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-base), transparent);
+        }
+
+        .crest-divider span {
+            color: var(--gold-base);
+            font-size: 0.8rem;
+        }
+
+        /* --- LUXURY BUTTONS --- */
+        .btn-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            padding: 1.25rem 3.2rem;
+            background: var(--gold-gradient);
+            color: #070708;
+            font-family: var(--font-cinzel);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s var(--ease-luxury);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .btn-gold::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold-shimmer);
+            transition: 0.7s;
+        }
+
+        .btn-gold:hover::before {
+            left: 100%;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+            color: #000;
         }
 
         .btn-outline {
-            display: inline-block;
-            padding: 0.85rem 2.2rem;
-            background-color: transparent;
-            color: var(--text-primary);
-            font-weight: 500;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 1.2rem 3rem;
+            background: rgba(7, 7, 8, 0.4);
+            backdrop-filter: blur(8px);
+            color: var(--text-heading);
+            border: 1px solid var(--border-gold);
+            font-family: var(--font-cinzel);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.4s var(--ease-luxury);
+            position: relative;
         }
 
         .btn-outline:hover {
-            border-color: var(--accent-gold);
-            color: var(--accent-gold);
+            border-color: var(--gold-base);
+            color: var(--gold-bright);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+            background: rgba(212, 175, 55, 0.1);
         }
 
-        /* --- HEADER & NAVIGATION --- */
+        /* --- NAVIGATION --- */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(15, 13, 14, 0.92);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(180deg, rgba(7, 7, 8, 0.95) 0%, rgba(7, 7, 8, 0.6) 70%, transparent 100%);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-gold);
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 0;
+            padding: 1.4rem 0;
         }
 
-        .logo {
-            font-family: var(--font-heading);
-            font-size: 2rem;
+        .brand-logo {
+            text-align: left;
+            position: relative;
+        }
+
+        .brand-logo .title {
+            font-family: var(--font-cinzel);
+            font-size: 2.5rem;
+            letter-spacing: 12px;
+            line-height: 1;
             font-weight: 700;
-            letter-spacing: 4px;
-            color: var(--accent-gold);
+        }
+
+        .brand-logo .tagline {
+            font-family: var(--font-cinzel);
+            font-size: 0.55rem;
+            letter-spacing: 6px;
+            color: var(--gold-base);
             text-transform: uppercase;
+            margin-top: 6px;
+            display: block;
+            font-weight: 600;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 3.5rem;
         }
 
         .nav-links a {
-            font-size: 0.85rem;
-            letter-spacing: 2px;
+            font-family: var(--font-cinzel);
+            font-size: 0.72rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            color: var(--text-primary);
-            transition: var(--transition);
+            color: var(--text-heading);
+            font-weight: 600;
+            transition: all 0.3s var(--ease-luxury);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 1px;
+            background: var(--gold-gradient);
+            transition: width 0.4s var(--ease-luxury);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-links a:hover {
-            color: var(--accent-gold);
+            color: var(--gold-bright);
         }
 
-        .nav-icons {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .nav-icons a {
-            color: var(--text-primary);
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            transition: var(--transition);
-        }
-
-        .nav-icons a:hover {
-            color: var(--accent-gold);
-        }
-
-        /* --- HERO SECTION --- */
+        /* --- FULL COVER HERO EDITORIAL SECTION --- */
         .hero {
-            height: 100vh;
-            background: linear-gradient(180deg, rgba(15, 13, 14, 0.4) 0%, rgba(15, 13, 14, 0.85) 100%),
-                url('/static/images/kajevaram.avif') center/cover no-repeat;
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
             display: flex;
             align-items: center;
+            justify-content: center;
+            padding-top: 140px;
+            padding-bottom: 8rem;
+            overflow: hidden;
+        }
+
+        /* Background Full Cover Image */
+        .hero-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: var(--bg-color);
+        }
+
+        .hero-bg-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 70% 55%;
+            filter: brightness(0.85) contrast(1.05);
+        }
+
+        /* Heavy Bottom Gradient Shadow Overlay */
+        .hero-bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background: linear-gradient(180deg,
+                    rgba(7, 7, 8, 0.6) 0%,
+                    rgba(7, 7, 8, 0.2) 35%,
+                    rgba(7, 7, 8, 0.85) 75%,
+                    #070708 100%);
+            pointer-events: none;
+        }
+
+        .hero .container {
             position: relative;
-            padding-top: 60px;
+            z-index: 3;
         }
 
         .hero-content {
-            max-width: 650px;
+            max-width: 800px;
         }
 
-        .hero-subtitle {
-            color: var(--accent-gold);
-            text-transform: uppercase;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 24px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-gold);
+            border-radius: 50px;
+            font-family: var(--font-cinzel);
+            font-size: 0.65rem;
             letter-spacing: 4px;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
+            text-transform: uppercase;
+            color: var(--gold-bright);
+            font-weight: 700;
+            margin-bottom: 2.2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
         }
 
         .hero-title {
-            font-family: var(--font-heading);
-            font-size: 4rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
+            font-family: var(--font-playfair);
+            font-size: 5.6rem;
+            line-height: 1.05;
+            color: var(--text-heading);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
         }
 
-        .hero-description {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 2.5rem;
+        .hero-title em {
+            font-style: italic;
+            font-family: var(--font-playfair);
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 400;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: rgba(248, 245, 238, 0.9);
+            margin-bottom: 3.2rem;
+            max-width: 600px;
+            line-height: 1.9;
             font-weight: 300;
-            max-width: 500px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
         }
 
-        .hero-buttons {
+        .hero-actions {
             display: flex;
-            gap: 1.2rem;
+            gap: 1.8rem;
+            align-items: center;
         }
 
-        /* --- FEATURED CATEGORIES --- */
+        /* --- CATEGORIES GALLERY --- */
         .categories {
-            padding: 6rem 0;
-            background-color: var(--surface-color);
+            padding: 9rem 0;
+            background-color: var(--bg-surface);
+            position: relative;
+            border-top: 1px solid var(--border-gold);
+            border-bottom: 1px solid var(--border-gold);
         }
 
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
         }
 
         .category-card {
             position: relative;
-            height: 420px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            transition: all 0.5s var(--ease-luxury);
             overflow: hidden;
-            border: 1px solid var(--border-color);
-            cursor: pointer;
         }
 
-        .category-card img {
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-deep), var(--shadow-gold);
+            border-color: var(--gold-base);
+        }
+
+        .category-img {
+            height: 480px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .category-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, var(--bg-card) 0%, transparent 60%);
+        }
+
+        .category-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 1.2s var(--ease-luxury);
         }
 
-        .category-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(0deg, rgba(15, 13, 14, 0.9) 0%, rgba(15, 13, 14, 0.2) 60%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 2rem;
-            transition: var(--transition);
+        .category-card:hover .category-img img {
+            transform: scale(1.08);
         }
 
-        .category-card:hover img {
-            transform: scale(1.06);
+        .category-info {
+            padding: 2.5rem;
+            text-align: center;
+            background: var(--bg-card);
+            position: relative;
+            z-index: 2;
+            margin-top: -30px;
         }
 
-        .category-title {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .category-count {
-            color: var(--accent-gold);
-            font-size: 0.8rem;
-            letter-spacing: 1px;
+        .category-info .type {
+            font-family: var(--font-cinzel);
+            font-size: 0.65rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
+            color: var(--gold-base);
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            display: block;
         }
 
-        /* --- FEATURED PRODUCTS --- */
-        .featured {
-            padding: 6rem 0;
+        .category-info h3 {
+            font-family: var(--font-playfair);
+            font-size: 2.2rem;
+            color: var(--text-heading);
+            font-weight: 400;
+            margin-bottom: 1.2rem;
+        }
+
+        .link-arrow {
+            font-family: var(--font-cinzel);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-bright);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: gap 0.3s var(--ease-luxury);
+        }
+
+        .category-card:hover .link-arrow {
+            gap: 18px;
+            color: var(--gold-base);
+        }
+
+        /* --- CURATED PRODUCTS SHOWCASE --- */
+        .products {
+            padding: 9rem 0;
+            background: var(--bg-void);
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.2rem;
         }
 
         .product-card {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
+            background: var(--bg-card);
+            padding: 1.2rem;
+            border: 1px solid var(--border-gold);
+            transition: all 0.5s var(--ease-luxury);
+            position: relative;
         }
 
         .product-card:hover {
-            border-color: var(--accent-gold);
-            transform: translateY(-5px);
+            box-shadow: var(--shadow-deep), 0 0 30px rgba(212, 175, 55, 0.15);
+            border-color: var(--gold-base);
+            transform: translateY(-8px);
         }
 
-        .product-image {
+        .product-thumb {
+            height: 390px;
             position: relative;
-            height: 360px;
             overflow: hidden;
+            background: #000;
         }
 
-        .product-image img {
+        .product-thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 1s var(--ease-luxury);
+            opacity: 0.95;
         }
 
-        .badge {
+        .product-card:hover .product-thumb img {
+            transform: scale(1.06);
+            opacity: 1;
+        }
+
+        .product-badge {
             position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background-color: var(--accent-gold);
-            color: var(--bg-color);
-            padding: 0.25rem 0.6rem;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 1px;
+            top: 16px;
+            left: 16px;
+            background: rgba(7, 7, 8, 0.85);
+            backdrop-filter: blur(10px);
+            color: var(--gold-bright);
+            font-family: var(--font-cinzel);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            padding: 6px 14px;
+            border: 1px solid var(--border-gold);
         }
 
-        .product-info {
-            padding: 1.5rem;
-            text-align: center;
+        .product-meta {
+            padding: 1.8rem 0.5rem 0.5rem 0.5rem;
         }
 
         .product-tag {
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            letter-spacing: 1px;
+            font-family: var(--font-cinzel);
+            font-size: 0.62rem;
+            color: var(--gold-base);
+            letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 0.4rem;
+            font-weight: 700;
         }
 
-        .product-name {
-            font-family: var(--font-heading);
-            font-size: 1.4rem;
-            margin-bottom: 0.6rem;
-            font-weight: 500;
+        .product-title {
+            font-family: var(--font-playfair);
+            font-size: 1.6rem;
+            color: var(--text-heading);
+            margin: 0.4rem 0 1rem 0;
+            font-weight: 400;
         }
 
         .product-price {
-            color: var(--accent-gold);
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-family: var(--font-cinzel);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--gold-bright);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(212, 175, 55, 0.12);
+            padding-top: 1rem;
         }
 
-        /* --- BRAND HERITAGE BANNER --- */
-        .banner {
-            padding: 6rem 0;
-            background: linear-gradient(rgba(15, 13, 14, 0.85), rgba(15, 13, 14, 0.85)),
-                url('/static/images/kajevaram.avif') fixed center/cover;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .banner-content {
-            max-width: 750px;
-            margin: 0 auto;
-        }
-
-        .banner h2 {
-            font-family: var(--font-heading);
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .banner p {
+        .product-price span {
+            font-size: 0.85rem;
             color: var(--text-muted);
-            font-size: 1rem;
+            text-decoration: line-through;
+            font-weight: 400;
+        }
+
+        /* --- HERITAGE LEGACY SECTION --- */
+        .heritage {
+            padding: 9rem 0;
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-gold);
+            position: relative;
+        }
+
+        .heritage-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 7rem;
+            align-items: center;
+        }
+
+        .heritage-text h2 {
+            font-family: var(--font-playfair);
+            font-size: 3.8rem;
+            color: var(--text-heading);
+            line-height: 1.12;
             margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .heritage-text p {
+            color: var(--text-body);
+            font-size: 1.05rem;
+            margin-bottom: 2.2rem;
+            line-height: 1.9;
             font-weight: 300;
-            line-height: 1.8;
+        }
+
+        .heritage-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3.5rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border-gold);
+        }
+
+        .stat-item h4 {
+            font-family: var(--font-playfair);
+            font-size: 3.2rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-family: var(--font-cinzel);
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        .heritage-frame {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-gold-bright);
+            box-shadow: var(--shadow-deep);
+        }
+
+        .heritage-frame img {
+            width: 100%;
+            height: 580px;
+            object-fit: cover;
         }
 
         /* --- FOOTER --- */
         footer {
-            background-color: var(--surface-color);
-            padding: 4rem 0 2rem 0;
-            border-top: 1px solid var(--border-color);
+            background-color: #040405;
+            color: #A09A93;
+            padding: 7rem 0 3rem 0;
+            border-top: 1px solid var(--border-gold);
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            grid-template-columns: 2.2fr 1fr 1fr 1.6fr;
+            gap: 4.5rem;
+            margin-bottom: 6rem;
         }
 
-        .footer-brand .logo {
-            margin-bottom: 1rem;
-            display: inline-block;
+        .footer-brand .title {
+            font-family: var(--font-cinzel);
+            font-size: 2.8rem;
+            letter-spacing: 12px;
+            font-weight: 700;
         }
 
         .footer-brand p {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            font-size: 0.85rem;
-            line-height: 1.7;
+            line-height: 1.9;
+            max-width: 340px;
         }
 
-        .footer-column h4 {
-            font-family: var(--font-heading);
-            font-size: 1.2rem;
-            color: var(--accent-gold);
-            margin-bottom: 1.2rem;
-            letter-spacing: 1px;
+        .footer-title {
+            font-family: var(--font-cinzel);
+            font-size: 0.9rem;
+            color: var(--gold-bright);
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
         }
 
-        .footer-column ul {
+        .footer-links {
             list-style: none;
         }
 
-        .footer-column ul li {
-            margin-bottom: 0.6rem;
+        .footer-links li {
+            margin-bottom: 1rem;
         }
 
-        .footer-column ul a {
+        .footer-links a {
             color: var(--text-muted);
             font-size: 0.85rem;
-            transition: var(--transition);
+            transition: all 0.3s var(--ease-luxury);
         }
 
-        .footer-column ul a:hover {
-            color: var(--text-primary);
+        .footer-links a:hover {
+            color: var(--gold-bright);
+            padding-left: 5px;
         }
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        .footer-contact-info {
+            list-style: none;
+            font-size: 0.88rem;
             color: var(--text-muted);
+        }
+
+        .footer-contact-info li {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-contact-info strong {
+            font-family: var(--font-cinzel);
+            color: var(--text-heading);
+            display: block;
+            margin-bottom: 4px;
+            letter-spacing: 1px;
             font-size: 0.8rem;
         }
 
-        /* --- RESPONSIVE DESIGN --- */
+        .footer-bottom {
+            padding-top: 3rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.78rem;
+            color: #55504A;
+            font-family: var(--font-cinzel);
+            letter-spacing: 1.5px;
+        }
+
+        /* --- RESPONSIVE BREAKPOINTS --- */
+        @media (max-width: 1024px) {
+            .heritage-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 4rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
 
+            .hero-bg-image img {
+                object-position: 62% center;
+            }
+
             .hero-title {
-                font-size: 2.8rem;
+                font-size: 3rem;
             }
 
-            .hero-buttons {
-                flex-direction: column;
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
             }
 
-            .banner h2 {
-                font-size: 2.2rem;
+            .product-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -472,177 +839,239 @@
 
 <body>
 
-    <!-- HEADER / NAVIGATION -->
+    <!-- NAVIGATION HEADER -->
     <header>
         <div class="container nav-container">
-            <a href="#" class="logo">AURA</a>
+            <a href="#" class="brand-logo">
+                <span class="title gold-text">AURA</span>
+                <span class="tagline">Haute Handlooms</span>
+            </a>
             <ul class="nav-links">
-                <li><a href="/collections">Collections</a></li>
+                <li><a href="/categories">Categories </a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="#heritage">Legacy</a></li>
                 <li><a href="/contact">Contact</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- FULL COVER HERO SECTION WITH SHADOW OVERLAY -->
     <section class="hero">
+        <div class="hero-bg-image">
+            <img src="/static/images/kajevaram.avif" alt="Haute Handloom Silk Saree Full Cover">
+        </div>
+        <div class="hero-bg-overlay"></div>
+
         <div class="container">
             <div class="hero-content">
-                <p class="hero-subtitle">The AURA Saree Collection</p>
-                <h1 class="hero-title">Timeless Sarees, Curated for You</h1>
-                <p class="hero-description">Discover a refined collection of Kanjeevaram, Banarasi, organza, and
-                    handloom sarees, chosen for their craft, beauty, and effortless elegance.</p>
-                <div class="hero-buttons">
-                    <a href="/collections" class="btn-primary">Shop Collection</a>
+                <span class="hero-badge">Royal Heritage Collection 2026</span>
+                <h1 class="hero-title">Woven Elegance, <em>Redefined</em> with Majesty</h1>
+                <p class="hero-desc">An opulent curation of pure Kanjeevarams, Varanasi Brocades, and Sheer
+                    Organzas—tailored in rich midnight obsidian and antique gold tones for ultimate royal
+                    sophistication.</p>
+                <div class="hero-actions">
+                    <a href="/products" class="btn-gold">Explore Curation →</a>
+                    <a href="#heritage" class="btn-outline">Our Legacy</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CATEGORIES SECTION -->
+    <!-- CATEGORIES GALLERY -->
     <section class="categories" id="collections">
         <div class="container">
-            <div class="section-title">
-                <p>Curated Weaves</p>
-                <h2>Explore Categories</h2>
+            <div class="section-header">
+                <span class="tagline">Traditional Masterpieces</span>
+                <h2>Explore Royal Weaves</h2>
+                <p>Centuries of inherited Indian artisan craftsmanship woven with pure metallic zari threads.</p>
+                <div class="crest-divider"><span>◆</span></div>
             </div>
             <div class="category-grid">
+                <!-- Category 1 -->
                 <div class="category-card">
-                    <img src="/static/images/download (8).jfif" alt="Kanjeevaram Saree">
-                    <div class="category-overlay">
-                        <h3 class="category-title">Kanjeevaram</h3>
-                        <span class="category-count">18 Designs</span>
+                    <div class="category-img">
+                        <img src="/static/images/download (8).jfif" alt="Kanjeevaram Saree">
+                    </div>
+                    <div class="category-info">
+                        <span class="type">Southern Royalty</span>
+                        <h3>Kanjeevaram</h3>
+                        <a href="/collections" class="link-arrow">Discover Weaves →</a>
                     </div>
                 </div>
+                <!-- Category 2 -->
                 <div class="category-card">
-                    <img src="/static/images/download (3).jfif" alt="Banarasi Silk Saree">
-                    <div class="category-overlay">
-                        <h3 class="category-title">Banarasi Silks</h3>
-                        <span class="category-count">24 Designs</span>
+                    <div class="category-img">
+                        <img src="/static/images/download (3).jfif" alt="Banarasi Silk">
+                    </div>
+                    <div class="category-info">
+                        <span class="type">Varanasi Brocade</span>
+                        <h3>Royal Banarasi</h3>
+                        <a href="/collections" class="link-arrow">Discover Weaves →</a>
                     </div>
                 </div>
-
+                <!-- Category 3 -->
                 <div class="category-card">
-                    <img src="/static/images/download (6).jfif" alt="Organza Saree">
-                    <div class="category-overlay">
-                        <h3 class="category-title">Sheer Organza</h3>
-                        <span class="category-count">15 Designs</span>
+                    <div class="category-img">
+                        <img src="/static/images/download (6).jfif" alt="Organza Silk">
+                    </div>
+                    <div class="category-info">
+                        <span class="type">Ethereal Drapes</span>
+                        <h3>Sheer Organza</h3>
+                        <a href="/collections" class="link-arrow">Discover Weaves →</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FEATURED PRODUCTS -->
-    <section class="featured" id="featured">
+    <!-- FEATURED PRODUCTS SHOWCASE -->
+    <section class="products" id="featured">
         <div class="container">
-            <div class="section-title">
-                <p>Handpicked Arrivals</p>
-                <h2>Featured Sarees</h2>
+            <div class="section-header">
+                <span class="tagline">Handpicked Curation</span>
+                <h2>Signature Sarees</h2>
+                <p>Selected for their royal luster, genuine gold zari embellishments, and flawless majestic drape.</p>
+                <div class="crest-divider"><span>◆</span></div>
             </div>
             <div class="product-grid">
                 <!-- Product 1 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <span class="badge">Bestseller</span>
+                    <div class="product-thumb">
+                        <span class="product-badge">Bestseller</span>
                         <img src="/static/images/bangali.jpg" alt="Crimson Royal Banarasi">
                     </div>
-                    <div class="product-info">
-                        <p class="product-tag">Pure Silk</p>
-                        <h3 class="product-name">Royal Banarasi</h3>
-                        <p class="product-price">₹2,500</p>
+                    <div class="product-meta">
+                        <span class="product-tag">Varanasi Brocade</span>
+                        <h3 class="product-title">Royal Crimson Banarasi</h3>
+                        <div class="product-price">
+                            ₹2,500 <span>₹3,200</span>
+                        </div>
                     </div>
                 </div>
                 <!-- Product 2 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <span class="badge">New</span>
+                    <div class="product-thumb">
+                        <span class="product-badge">New Arrival</span>
                         <img src="/static/images/yollow.jpg" alt="Golden Weaver Kanjeevaram">
                     </div>
-                    <div class="product-info">
-                        <p class="product-tag">
-                            Kanjeevaram
-                        </p>
-                        <h3 class="product-name">Golden Weaver Kanjeevaram</h3>
-                        <p class="product-price">₹4,000</p>
+                    <div class="product-meta">
+                        <span class="product-tag">Pure Kanchipuram</span>
+                        <h3 class="product-title">Golden Zari Kanjeevaram</h3>
+                        <div class="product-price">
+                            ₹4,000 <span>₹5,000</span>
+                        </div>
                     </div>
                 </div>
                 <!-- Product 3 -->
                 <div class="product-card">
-                    <div class="product-image">
+                    <div class="product-thumb">
+                        <span class="product-badge">Lightweight</span>
                         <img src="/static/images/sweet pink.jpg" alt="Emerald Floral Organza">
                     </div>
-                    <div class="product-info">
-                        <p class="product-tag">Lightweight</p>
-                        <h3 class="product-name">Emerald Floral Organza</h3>
-                        <p class="product-price">₹1,200</p>
+                    <div class="product-meta">
+                        <span class="product-tag">Hand-Painted</span>
+                        <h3 class="product-title">Blush Floral Organza</h3>
+                        <div class="product-price">
+                            ₹1,200 <span>₹1,600</span>
+                        </div>
                     </div>
                 </div>
                 <!-- Product 4 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <span class="badge">Exclusive</span>
+                    <div class="product-thumb">
+                        <span class="product-badge">Exclusive</span>
                         <img src="/static/images/warm.jfif" alt="Solid Monochromatic Saree">
                     </div>
-                    <div class="product-info">
-                        <p class="product-tag">Mulmul Cotton</p>
-                        <h3 class="product-name">Solid Monochromatic Saree</h3>
-                        <p class="product-price">₹1,800</p>
+                    <div class="product-meta">
+                        <span class="product-tag">Mulmul Weave</span>
+                        <h3 class="product-title">Classic Handloom Mulmul</h3>
+                        <div class="product-price">
+                            ₹1,800 <span>₹2,200</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- HERITAGE BANNER -->
-    <section class="banner" id="heritage">
+    <!-- HERITAGE STORY SECTION -->
+    <section class="heritage" id="heritage">
         <div class="container">
-            <div class="banner-content">
-                <h2>Preserving Indian Artistry</h2>
-                <p>Every saree at AURA is a labor of love, woven over weeks by traditional master weavers across
-                    Varanasi, Kanchipuram, and Bengal. We bridge centuries-old craftsmanship with modern aesthetic
-                    refinement.</p>
-                <a href="/our_story" class="btn-primary">Learn Our Story</a>
+            <div class="heritage-grid">
+                <div class="heritage-text">
+                    <span class="tagline"
+                        style="color: var(--gold-base); font-family: var(--font-cinzel); font-weight:700; letter-spacing:4px; text-transform:uppercase; font-size:0.7rem; display:block; margin-bottom:1rem;">Authentic
+                        Craftsmanship</span>
+                    <h2>Centuries of Royal Heritage in Every Thread</h2>
+                    <p>Every creation from AURA reflects painstaking handloom techniques preserved over generations by
+                        India's master weavers. We bring royal looms straight to haute couture fashion connoisseurs.</p>
+                    <a href="/our_story" class="btn-gold">Read Our Story</a>
+                    <div class="heritage-stats">
+                        <div class="stat-item">
+                            <h4>300+</h4>
+                            <p>Master Artisans</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>Royal</h4>
+                            <p>Handloom Weaves</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="heritage-frame">
+                    <img src="/static/images/kajevaram.avif" alt="Weaving Craft Heritage">
+                </div>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer id="contact">
+    <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="#" class="logo">AURA</a>
-                    <p>Premium sarees crafted with tradition, artistry, and timeless elegance.</p>
+                    <span class="title gold-text">AURA</span>
+                    <p>Elevating traditional Indian handlooms through haute couture aesthetics, deep obsidian palettes,
+                        and pure metallic gold luxury.</p>
                 </div>
-                <div class="footer-column">
-                    <h4>Collections</h4>
-                    <ul>
-                        <li><a href="#">Banarasi Silks</a></li>
-                        <li><a href="#">Kanjeevaram</a></li>
-                        <li><a href="#">Silk</a></li>
-                        <li><a href="#">Cotton</a></li>
-                        <li><a href="#">Others</a></li>
+                <div>
+                    <h4 class="footer-title">Collections</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Royal Banarasi</a></li>
+                        <li><a href="#">Kanjeevaram Silk</a></li>
+                        <li><a href="#">Sheer Organza</a></li>
+                        <li><a href="#">Handloom Mulmul</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h4>Owner Contact</h4>
-                    <ul>
-                        <li><a href="#">Babul Das &amp; Sompa Das</a></li>
-                        <li><a href="tel:+919630399898">+91 96303 99898</a></li>
-                        <li><a href="mailto:rirthadas6@gmail.com">rirthadas6@gmail.com</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Boutique</h4>
-                    <ul>
+                <div>
+                    <h4 class="footer-title">Boutique</h4>
+                    <ul class="footer-links">
                         <li><a href="/about_us">About AURA</a></li>
-                        <li><a href="#">Store Locator</a></li>
-                        <li><a href="/our_story">Press & Media</a></li>
+                        <li><a href="/our_story">Artisan Story</a></li>
+                        <li><a href="#">Quality Guarantee</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Direct Contact</h4>
+                    <ul class="footer-contact-info">
+                        <li>
+                            <strong>Boutique Owners</strong>
+                            Babul Das &amp; Sompa Das
+                        </li>
+                        <li>
+                            <strong>Phone</strong>
+                            +91 96303 99898
+                        </li>
+                        <li>
+                            <strong>Email</strong>
+                            rirthadas6@gmail.com
+                        </li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 AURA Handloom Sarees. All Rights Reserved.</p>
+                <p>Designed for Royal Obsidian &amp; Gold Luxury</p>
             </div>
         </div>
     </footer>
