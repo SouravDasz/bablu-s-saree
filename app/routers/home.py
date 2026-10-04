@@ -1,6 +1,9 @@
 from fastapi import APIRouter, Depends, Request
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
+from fastapi import Query
+from urllib.parse import urlencode
+
 
 from app.database import get_db
 from app.models.product import Product
@@ -44,10 +47,11 @@ def products(
     category: str | None = None,
     price_sort: str | None = None,
     sort: str | None = None,
+    page:int =Query(1,ge=1),
     db: Session = Depends(get_db),
 ):
+    page_size=12
     query = db.query(Product)
-
     if search:
         query = query.filter(Product.name.ilike(f"%{search}%"))
 
@@ -64,40 +68,83 @@ def products(
     elif sort == "newest" or not price_sort:
         query = query.order_by(Product.created_at.desc())
 
-    products = query.all()
+
+    total_product=query.count()
+
+    total_pages=max(1, (total_product+page_size-1)//page_size)
+
+    skip=(page-1)*page_size
+
+    products=query.offset(skip).limit(page_size).all()
     categories = [row[0] for row in db.query(Product.category).distinct().order_by(Product.category).all()]
+    filter_query = urlencode({
+        key: value for key, value in {
+            "search": search,
+            "category": category,
+            "price_sort": price_sort,
+            "sort": sort,
+        }.items() if value
+    })
+    
 
     return templates.TemplateResponse(
-        request,
-        "products.html",
-        {
-            "products": products,
-            "categories": categories,
-            "search": search or "",
-            "category": category or "",
-            "price_sort": price_sort or "",
-            "sort": sort or "",
-        }
-    )
+    request,
+    "products.html",
+    {
+        "products": products,
+        "categories": categories,
+        "search": search or "",
+        "category": category or "",
+        "price_sort": price_sort or "",
+        "sort": sort or "",
+
+        "page": page,
+        "total_pages": total_pages,
+        "filter_query": filter_query,
+    }
+)
 
 
 @router.get("/categories")
-def categories(request: Request, db: Session = Depends(get_db)):
+def categories(
+    request: Request,
+    page: int = Query(1, ge=1),
+    db: Session = Depends(get_db),
+):
     products = db.query(Product).order_by(Product.created_at.desc()).all()
     products_by_category = {category: [] for category in SAREE_CATEGORIES}
 
     for product in products:
         products_by_category.setdefault(product.category, []).append(product)
 
+    page_size = 8
+    total_pages = max(
+        1,
+        max(
+            (len(category_products) + page_size - 1) // page_size
+            for category_products in products_by_category.values()
+        ),
+    )
+    page = min(page, total_pages)
+    start = (page - 1) * page_size
+
     category_cards = [
-        {"name": category, "products": products_by_category[category]}
+        {
+            "name": category,
+            "products": products_by_category[category][start:start + page_size],
+            "total_products": len(products_by_category[category]),
+        }
         for category in SAREE_CATEGORIES
     ]
 
     return templates.TemplateResponse(
         request,
         "categories.html",
-        {"category_cards": category_cards},
+        {
+            "category_cards": category_cards,
+            "page": page,
+            "total_pages": total_pages,
+        },
     )
 
 @router.get("/product/{id}")

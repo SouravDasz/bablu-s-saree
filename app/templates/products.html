@@ -266,6 +266,31 @@
             </article>
             {% endfor %}
         </section>
+
+        {% if total_pages > 1 %}
+        <nav aria-label="Product pages" class="mt-12 flex flex-wrap items-center justify-center gap-2">
+            {% if page > 1 %}
+            <a href="/products?page={{ page - 1 }}{% if filter_query %}&{{ filter_query }}{% endif %}"
+                class="border border-[#c5a059]/40 bg-white px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#181512] transition-colors hover:border-[#c5a059] hover:bg-[#f4f0ea]">
+                Previous
+            </a>
+            {% endif %}
+
+            {% for page_number in range(1, total_pages + 1) %}
+            <a href="/products?page={{ page_number }}{% if filter_query %}&{{ filter_query }}{% endif %}"
+                class="flex h-10 w-10 items-center justify-center border text-xs font-semibold transition-colors {% if page_number == page %}border-[#181512] bg-[#181512] text-[#e8d5b5]{% else %}border-[#c5a059]/30 bg-white text-[#181512] hover:border-[#c5a059] hover:bg-[#f4f0ea]{% endif %}">
+                {{ page_number }}
+            </a>
+            {% endfor %}
+
+            {% if page < total_pages %} <a
+                href="/products?page={{ page + 1 }}{% if filter_query %}&{{ filter_query }}{% endif %}"
+                class="border border-[#c5a059]/40 bg-white px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#181512] transition-colors hover:border-[#c5a059] hover:bg-[#f4f0ea]">
+                Next
+                </a>
+                {% endif %}
+        </nav>
+        {% endif %}
         {% else %}
         <!-- EMPTY STATE -->
         <section class="my-12 border border-dashed border-[#c5a059]/40 bg-white px-6 py-24 text-center shadow-sm">
