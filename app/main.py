@@ -6,6 +6,7 @@ from app.core.config import SESSION_SECRET
 from app.routers.admin import router as admin_router
 from app.database import Base,engine
 from app.routers.home import router as home_router
+from app.routers.about_us import router as about_router
 
 app=FastAPI(title="Saree app")
 
@@ -14,7 +15,7 @@ app.add_middleware(
     secret_key=SESSION_SECRET
 )
 
-router_list=[home_router,admin_router]
+router_list=[home_router,admin_router,about_router]
 for router in router_list:
     app.include_router(router)
 
@@ -31,4 +32,3 @@ app.mount(
     StaticFiles(directory="app/static"),
     name="static"
 )
-
