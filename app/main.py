@@ -26,3 +26,7 @@ app.mount(
     StaticFiles(directory="app/static"),
     name="static"
 )
+
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
