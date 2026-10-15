@@ -212,7 +212,7 @@
                         <div
                             class="relative group rounded-xl border border-slate-200 overflow-hidden bg-slate-50 aspect-square flex items-center justify-center">
                             {% if product.image %}
-                            <img id="current-img-preview" src="/files/products/{{ product.image }}"
+                            <img id="current-img-preview" src="{{ image_url(product.image) }}"
                                 alt="{{ product.name }}"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             {% else %}

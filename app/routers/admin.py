@@ -1,9 +1,6 @@
-from fastapi import APIRouter,Form,Request,Depends,UploadFile,File
+from fastapi import APIRouter, Form, Request, Depends, UploadFile, File
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
-import os
-import uuid
-import shutil
 from urllib.parse import urlencode
 from sqlalchemy.orm import Session
 
@@ -12,6 +9,7 @@ from app.core.config import ADMIN_EMAIL,ADMIN_PASSWORD
 from app.core.auth import require_admin
 from app.models.product import Product
 from app.database import get_db
+from app.services.storage import delete_product_image, image_url, upload_product_image
 
 
 router=APIRouter(
@@ -21,6 +19,7 @@ router=APIRouter(
 templates = Jinja2Templates(
     directory="app/templates"
 )
+templates.env.globals["image_url"] = image_url
 
 
 #render login page
@@ -92,24 +91,7 @@ def add_product(
     admin=Depends(require_admin)
 ):
 
-    upload_dir = "uploads/products"
-
-    os.makedirs(upload_dir, exist_ok=True)
-
-    extension = os.path.splitext(image.filename)[1]
-
-    filename = f"{uuid.uuid4()}{extension}"
-
-    file_path = os.path.join(
-        upload_dir,
-        filename
-    )
-
-    with open(file_path, "wb") as buffer:
-        shutil.copyfileobj(
-            image.file,
-            buffer
-        )
+    image_url = upload_product_image(image.file, image.filename)
 
     product = Product(
         name=name,
@@ -118,7 +100,7 @@ def add_product(
         price=price,
         stock=stock,
         offer=offer,
-        image=filename
+        image=image_url
     )
 
     db.add(product)
@@ -261,25 +243,9 @@ def update_product(
     # 4. Handle new image
     if image and image.filename:
 
-        upload_dir = "uploads/products"
-        os.makedirs(upload_dir, exist_ok=True)
-
-        extension = os.path.splitext(image.filename)[1]
-
-        filename = f"{uuid.uuid4()}{extension}"
-
-        file_path = os.path.join(
-            upload_dir,
-            filename
-        )
-
-        with open(file_path, "wb") as buffer:
-            shutil.copyfileobj(
-                image.file,
-                buffer
-            )
-
-        product.image = filename
+        old_image = product.image
+        product.image = upload_product_image(image.file, image.filename)
+        delete_product_image(old_image)
 
     # 5. Save changes
     db.commit()
@@ -305,6 +271,7 @@ def delete_product(
             "/admin/products",
             status_code=303
         )
+    delete_product_image(product.image)
     db.delete(product)
     db.commit()
     return RedirectResponse(

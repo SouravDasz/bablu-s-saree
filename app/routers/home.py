@@ -7,10 +7,12 @@ from urllib.parse import urlencode
 
 from app.database import get_db
 from app.models.product import Product
+from app.services.storage import image_url
 
 templates = Jinja2Templates(
     directory="app/templates"
 )
+templates.env.globals["image_url"] = image_url
 
 
 router=APIRouter(tags=["HomePage"])

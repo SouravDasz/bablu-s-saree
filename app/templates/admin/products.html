@@ -189,7 +189,7 @@
                     <div
                         class="w-full aspect-[3/4] bg-slate-100/80 relative overflow-hidden flex items-center justify-center p-2">
 
-                        <img src="/files/products/{{ product.image }}" alt="{{ product.name }}"
+                        <img src="{{ image_url(product.image) }}" alt="{{ product.name }}"
                             class="max-w-full max-h-full object-contain drop-shadow-sm"
                             onerror="this.onerror=null; this.src='https://placehold.co/400x533/f8fafc/64748b?text=Saree+Image';">
 

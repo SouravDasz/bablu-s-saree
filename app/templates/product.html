@@ -56,7 +56,7 @@
         <section class="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)] lg:items-start lg:gap-16">
             <div class="relative overflow-hidden border border-[#c5a059]/20 bg-[#f4f0ea]">
                 {% if product.image %}
-                <img src="/files/products/{{ product.image }}" alt="{{ product.name }}"
+                <img src="{{ image_url(product.image) }}" alt="{{ product.name }}"
                     class="aspect-[0.86] h-full w-full object-cover">
                 {% else %}
                 <img src="/static/images/kajevaram.avif" alt="{{ product.name }}"

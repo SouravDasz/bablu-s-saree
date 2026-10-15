@@ -79,7 +79,7 @@
                     <article class="overflow-hidden border border-[#c5a059]/15 bg-[#fcfbf7]">
                         <div class="aspect-[0.82] overflow-hidden bg-[#f4f0ea]">
                             {% if product.image %}
-                            <img src="/files/products/{{ product.image }}" alt="{{ product.name }}"
+                            <img src="{{ image_url(product.image) }}" alt="{{ product.name }}"
                                 class="h-full w-full object-cover">
                             {% else %}
                             <img src="/static/images/kajevaram.avif" alt="{{ product.name }}"

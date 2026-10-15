@@ -22,12 +22,6 @@ for router in router_list:
 Base.metadata.create_all(bind=engine)
 
 app.mount(
-    "/files",
-    StaticFiles(directory="uploads"),
-    name="files"
-)
-
-app.mount(
     "/static",
     StaticFiles(directory="app/static"),
     name="static"
